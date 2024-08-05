@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM Example</title>
+</head>
+<body>
+	<h1 id="myElement" style="width:300px;height:100px;  color:rgb(9, 129, 27)">Register Form</h1>
+
+    <form >
+		<label for="name" style="color: rgb(109, 107, 224);">Name:</label>
+		<input type="text" id="name" name="name" placeholder="FirstName  LastName"><br><br>
+		<label for="dob" style="color: rgb(109, 107, 224);">Date of Birth:</label>
+		<input type="date" id="dob" name="dob"><br><br>
+        <label for="gmail" style="color: rgb(109, 107, 224);">Gmail:</label>
+        <input type="email" id="gmail" name="gmail" inputmode="email" placeholder="example@gmail.com" required>
+        <label for="linkedin" style="color: rgb(109, 107, 224);">LinkedIn Id:</label>
+        <input type="link" id="linkedin" name="linkedin" inputmode="url"><br><br>
+        <label for="phone" style="color: rgb(109, 107, 224);">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="Enter phone number" required><br><br>
+		<label for="city" style="color: rgb(109, 107, 224);">City:</label>
+		<input type="text" id="city" name="city">
+        <label for="statw" style="color: rgb(109, 107, 224);">State:</label>
+		<input type="text" id="state" name="state">
+        <label for="pincode" style="color: rgb(109, 107, 224);">Pincode:</label>
+        <input type="tel" id="pincode" name="pincode" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="Enter pincode" required><br><br>
+        <input type="button" value="Submit">
+	</form>
+
+	<script>
+		const element = document.getElementById('myElement');
+		function changeText(text) {
+			element.textContent = text;
+		}
+
+		function delayChange(text, delay) {
+			return new Promise(resolve => {
+				setTimeout(() => {
+					changeText(text);
+					resolve();
+				}, delay);
+			});
+		}
+		const texts =['Register Form 1', 'Register Form 2', 'Register Form 3', 'Register Form 4','Register Form 5'];
+
+		let index = 0;
+		function loop() {
+			delayChange(texts[index], 2000)
+				.then(() => {
+					index = (index + 1) % texts.length;
+					loop();
+				});
+		}
+
+		loop();
+	</script>
+
+</body>
+</html>
