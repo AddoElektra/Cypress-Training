@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register Form</title>
+    
+</head>
+<body>
+	<h2 id="myElement" style="width:200px;height:50px;  color:rgb(9, 129, 27)" >Register Form</h2>
+    <script>
+        //change DOM every 2 sec
+        const element = document.getElementById('myElement');
+        function changeText(text) {
+            element.textContent = text;
+        }
+        function delayChange(text, delay) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    changeText(text);
+                    resolve();
+                }, delay);
+            });
+        }
+        const texts = ['Register Form 1', 'Register Form 2', 'Register Form 3', 'Register Form 4','Register Form 5'];
+        let index = 0;
+        function loop() {
+            delayChange(texts[index], 2000)
+                .then(() => {
+                    index = (index + 1) % texts.length;
+                    loop();
+                });
+        }
+        loop();
+        </script>
+</body>
+
+</html>
