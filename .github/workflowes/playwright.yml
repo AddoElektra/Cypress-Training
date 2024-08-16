@@ -1,0 +1,17 @@
+name: Playwright Tests
+
+on:
+push:
+branches:
+-main
+
+jobs:
+test:
+runs-on:ubuntu-latest
+steps:
+-name:Checkout code
+users:actions/checkout@v3
+-name:Install dependencies
+run:npm install
+-name:Run Playwright tests
+run:npx playwright test
