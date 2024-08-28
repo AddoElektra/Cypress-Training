@@ -1,4 +1,9 @@
+const cypress = require('cypress')
+
 //retries
+require('dotenv').config
+const name=Cypress.env('name')
+const pass=Cypress.env('pass')
 describe('LinkedIn ', () => {
     it('premium', {
       retries: {
@@ -7,10 +12,10 @@ describe('LinkedIn ', () => {
       },
     }, () => {
       cy.visit('https://www.linkedin.com/login')
-      cy.get('[name="session_key"]').type('ece1821@cemk.ac.in')
-      cy.get('[name="session_password"]').type('Tina@4500')
+      cy.get('[name="session_key"]').type(name)
+      cy.get('[name="session_password"]').type(pass)
       cy.get('.btn__primary--large').click()
-      cy.get('span'[class]).should('contain', 'Try Premium for ₹0')
+      cy.get('span[class]').should('contain', 'Try Premium for ₹0')
     })
   })
   
