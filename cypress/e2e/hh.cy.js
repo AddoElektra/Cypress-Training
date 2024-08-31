@@ -8,5 +8,7 @@ describe('template spec', () => {
       cy.get('input[name="username"]').type(username)
       cy.get('input[type="password"]').type(pass)
       cy.get('button[type="submit"]').click()
+      cy.wait(5000)
+      cy.screenshot()
     })
   })
